@@ -1,68 +1,47 @@
 <template>
   <section class="container">
-    <div>
-      <app-logo/>
-      <h1 class="title">
-        silicate-cms
-      </h1>
-      <h2 class="subtitle">
-        simple cms system built on nuxt & node
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">
-          GitHub
-        </a>
+    <div class="row">
+      <div class="col s12 m6 offset-m3">
+        <div class="card darken-1">
+          <div class="card-content">
+            <span class="card-title">Login</span>
+            <p>Please fill out the form below and click login</p>
+            <form>
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">email</i>
+                  <input id="email" type="email" class="validate">
+                  <label for="email">Email Address</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">lock</i>
+                  <input id="password" type="password" class="validate">
+                  <label for="password">Password</label>
+                </div>
+              </div>
+              <button class="waves-effect waves-light btn" type="button">
+                Login
+                <i class="material-icons right">send</i>
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
-
 export default {
-  components: {
-    AppLogo
+  head: {
+    title: 'Silicate CMS - Login'
+  },
+  data() {
+    return {
+      authed: false
+    }
   }
 }
 </script>
-
-<style>
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
