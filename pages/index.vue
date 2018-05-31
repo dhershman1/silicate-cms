@@ -2,7 +2,8 @@
   <section class="container">
     <div class="row">
       <div class="col s12 m6 offset-m3">
-        <div class="card darken-1">
+        <h1 class="center-align">Silicate CMS</h1>
+        <div class="card teal lighten-5">
           <div class="card-content">
             <span class="card-title">Login</span>
             <p>Please fill out the form below and click login</p>
@@ -11,14 +12,14 @@
                 <div class="input-field col s12">
                   <i class="material-icons prefix">email</i>
                   <input id="email" type="email" class="validate">
-                  <label for="email">Email Address</label>
+                  <label class="black-text" for="email">Email Address</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12">
                   <i class="material-icons prefix">lock</i>
                   <input id="password" type="password" class="validate">
-                  <label for="password">Password</label>
+                  <label class="black-text" for="password">Password</label>
                 </div>
               </div>
               <button class="waves-effect waves-light btn" type="button">
@@ -45,3 +46,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.btn {
+  font-weight: 700;
+}
+</style>
