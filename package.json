@@ -1,0 +1,24 @@
+{
+  "name": "silicate-cms",
+  "version": "1.0.0",
+  "description": "simple cms system built on nuxt & node",
+  "author": "dhershman1 <dustinh17@gmail.com>",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "standard **/*.js",
+    "precommit": "npm run lint"
+  },
+  "dependencies": {
+    "nuxt": "1.4.0"
+  },
+  "devDependencies": {
+    "@vue/test-utils": "1.0.0-beta.16",
+    "standard": "11.0.1",
+    "tap-spec": "4.1.2",
+    "tape": "4.9.0"
+  }
+}

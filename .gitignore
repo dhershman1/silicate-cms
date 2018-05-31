@@ -1,3 +1,6 @@
+# Build folder for nuxt
+.nuxt
+
 # Logs
 logs
 *.log
