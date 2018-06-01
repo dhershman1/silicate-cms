@@ -14,3 +14,10 @@
     <nuxt/>
   </div>
 </template>
+
+<style scoped>
+.sidenav {
+  width: 200px;
+}
+</style>
+
