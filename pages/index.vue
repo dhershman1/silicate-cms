@@ -1,5 +1,5 @@
 <template>
-  <section class="container">
+  <section>
     <div class="row">
       <div class="col s12 m6 offset-m3">
         <h1 class="center-align">Silicate CMS</h1>

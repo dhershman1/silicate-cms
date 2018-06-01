@@ -1,5 +1,5 @@
 <template>
-  <div role="main">
+  <div class="container" role="main">
     <ul class="sidenav sidenav-fixed">
       <li class="logo">
         <a class="logo__brand" href="/">
