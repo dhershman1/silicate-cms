@@ -1,37 +1,38 @@
 <template>
-  <section>
-    <div class="row">
-      <div class="col s12 m6 offset-m3">
-        <h1 class="center-align">Silicate CMS</h1>
-        <div class="card teal lighten-5">
-          <div class="card-content">
-            <span class="card-title">Login</span>
-            <p>Please fill out the form below and click login</p>
-            <form>
-              <div class="row">
-                <div class="input-field col s12">
-                  <i class="material-icons prefix">email</i>
-                  <input id="email" type="email" class="validate">
-                  <label class="black-text" for="email">Email Address</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s12">
-                  <i class="material-icons prefix">lock</i>
-                  <input id="password" type="password" class="validate">
-                  <label class="black-text" for="password">Password</label>
-                </div>
-              </div>
-              <button class="waves-effect waves-light btn" type="button">
-                Login
-                <i class="material-icons right">send</i>
-              </button>
-            </form>
-          </div>
-        </div>
+  <div>
+    <h3>Login</h3>
+    <p>Please fill out the form below and click login</p>
+    <form>
+      <!-- Find a better way to handle this not a fan -->
+      <div :class="['anim', { 'anim--filled': emailFilled || email }]">
+        <input
+          id="email"
+          class="anim__field"
+          type="email"
+          name="email"
+          v-model="email"
+          @focus="emailFilled = true"
+          @blur="emailFilled = false">
+        <label class="anim__label" for="email">
+          <span class="anim__label-content">Email Address</span>
+        </label>
       </div>
-    </div>
-  </section>
+      <div :class="['anim', { 'anim--filled': passFilled || password }]">
+        <input
+          id="password"
+          class="anim__field"
+          type="password"
+          name="password"
+          v-model="password"
+          @focus="passFilled = true"
+          @blur="passFilled = false">
+        <label class="anim__label" for="password">
+          <span class="anim__label-content">Password</span>
+        </label>
+      </div>
+      <button class="btn--fill btn--md" type="button">Login</button>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -41,7 +42,11 @@ export default {
   },
   data () {
     return {
-      authed: false
+      emailFilled: false,
+      passFilled: false,
+      authed: false,
+      email: '',
+      password: ''
     }
   }
 }

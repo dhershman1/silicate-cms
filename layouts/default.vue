@@ -1,31 +1,33 @@
 <template>
-  <div class="container" role="main">
-    <ul class="sidenav sidenav-fixed" role="navigation">
-      <li class="logo">
-        <a class="logo__brand" href="/">
-          <img class="logo__img" src="/imgs/logo.png"/>
+  <div>
+    <header>
+      <h1>
+        <a href="/">
+          <img src="/imgs/logo.png" height="30"/>
         </a>
-      </li>
-      <li class="version">
-        <p>v{{ version }}</p>
-      </li>
-      <li class="nav-item" title="Go to the dashboard page">
-        <a class="black-text" href="/dashboard">
-          <i class="material-icons">dashboard</i><span>Dashboard</span>
-        </a>
-      </li>
-      <li class="nav-item" title="Go to the users page">
-        <a class="black-text" href="/users">
-          <i class="material-icons">person</i><span>Users</span>
-        </a>
-      </li>
-      <li class="nav-item" title="Go to the login page">
-        <a class="black-text" href="/">
-          <i class="material-icons">lock</i><span>Login</span>
-        </a>
-      </li>
-    </ul>
-    <nuxt/>
+        Silicate
+        <small>v{{ version }}</small>
+      </h1>
+    </header>
+    <aside role="navigation">
+      <nav>
+        <ul>
+          <li>
+            <a href="/dashboard">Dashboard</a>
+          </li>
+          <li>
+            <a href="/users">Users</a>
+          </li>
+          <li>
+            <a href="/">Login</a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <main role="main">
+      <nuxt/>
+    </main>
+    <footer>&copy; Dustin Hershman</footer>
   </div>
 </template>
 

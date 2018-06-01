@@ -16,28 +16,14 @@ module.exports = {
       {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/icon?family=Material+Icons'
-      },
-      {
-        rel: 'stylesheet',
-        href: 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css'
-      },
-      {
-        rel: 'stylesheet',
-        href: '/main.css'
       }
     ]
   },
+  css: [
+    '@/static/css/main.css'
+  ],
   /*
   ** Customize the progress bar color
   */
-  loading: { color: '#3B8070' },
-
-  /*
-  ** Build settings
-  */
-  build: {
-    vendor: [
-      '~/plugins/materialize.min.js'
-    ]
-  }
+  loading: { color: '#3B8070' }
 }
