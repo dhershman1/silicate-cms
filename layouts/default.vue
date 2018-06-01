@@ -1,6 +1,6 @@
 <template>
   <div class="container" role="main">
-    <ul class="sidenav sidenav-fixed">
+    <ul class="sidenav sidenav-fixed" role="navigation">
       <li class="logo">
         <a class="logo__brand" href="/">
           <img class="logo__img" src="/imgs/logo.png"/>
@@ -9,14 +9,20 @@
       <li class="version">
         <p>v{{ version }}</p>
       </li>
-      <li class="nav-item">
-        <a class="black-text" href="/dashboard"><i class="material-icons">dashboard</i><span>Dashboard</span></a>
+      <li class="nav-item" title="Go to the dashboard page">
+        <a class="black-text" href="/dashboard">
+          <i class="material-icons">dashboard</i><span>Dashboard</span>
+        </a>
       </li>
-      <li class="nav-item">
-        <a class="black-text" href="/users"><i class="material-icons">person</i><span>Users</span></a>
+      <li class="nav-item" title="Go to the users page">
+        <a class="black-text" href="/users">
+          <i class="material-icons">person</i><span>Users</span>
+        </a>
       </li>
-      <li class="nav-item">
-        <a class="black-text" href="/"><i class="material-icons">lock</i><span>Login</span></a>
+      <li class="nav-item" title="Go to the login page">
+        <a class="black-text" href="/">
+          <i class="material-icons">lock</i><span>Login</span>
+        </a>
       </li>
     </ul>
     <nuxt/>
@@ -28,7 +34,7 @@ import { version } from '~/package.json'
 
 export default {
   computed: {
-    version() {
+    version () {
       return version
     }
   }
@@ -41,19 +47,19 @@ li.nav-item > a {
   font-size: 16px;
 }
 .nav-item > a > .material-icons {
-  margin-right: 10px;
+  margin-right: 0.625rem;
 }
 .nav-item span {
   font-weight: 600;
 }
 .version {
   position: absolute;
-  top: 100px;
+  top: 6.25rem;
   left: 0;
   right: 0;
   text-align: center;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 .version p {
   margin-top: 0;
@@ -61,11 +67,11 @@ li.nav-item > a {
 }
 .logo {
   text-align: center;
-  margin-top: 32px;
-  margin-bottom: 75px;
+  margin-top: 2rem;
+  margin-bottom: 4.6rem;
 }
 .logo__brand {
-  height: 57px;
+  height: 3.5rem;
 }
 .logo__img {
   display: inline-block;
@@ -73,7 +79,7 @@ li.nav-item > a {
   pointer-events: none;
 }
 .sidenav {
-  width: 200px;
+  width: 12.5rem;
 }
 </style>
 
