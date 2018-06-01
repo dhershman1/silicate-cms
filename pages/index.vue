@@ -39,7 +39,7 @@ export default {
   head: {
     title: 'Silicate CMS - Login'
   },
-  data() {
+  data () {
     return {
       authed: false
     }
