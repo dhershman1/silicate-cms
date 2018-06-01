@@ -1,6 +1,6 @@
 {
   "name": "silicate-cms",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "simple cms system built on nuxt & node",
   "author": "dhershman1 <dustinh17@gmail.com>",
   "private": true,
