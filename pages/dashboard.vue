@@ -42,7 +42,6 @@ export default {
     page () {
       this.section = ''
       this.buckets = []
-      M.FormSelect.init(document.querySelectorAll('select'))
     },
     section () {
       this.buckets = []
@@ -113,9 +112,6 @@ export default {
         }
       ]
     }
-  },
-  mounted () {
-    M.FormSelect.init(document.querySelectorAll('select'))
   }
 }
 </script>
