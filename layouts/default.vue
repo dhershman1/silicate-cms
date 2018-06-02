@@ -13,13 +13,13 @@
       <nav>
         <ul>
           <li>
-            <a href="/dashboard">Dashboard</a>
+            <a href="/dashboard"><i class="icon-meter"></i> Dashboard</a>
           </li>
           <li>
-            <a href="/users">Users</a>
+            <a href="/users"><i class="icon-users"></i> Users</a>
           </li>
           <li>
-            <a href="/">Login</a>
+            <a href="/"><i class="icon-key"></i> Login</a>
           </li>
         </ul>
       </nav>

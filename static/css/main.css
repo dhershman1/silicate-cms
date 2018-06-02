@@ -1,5 +1,5 @@
 /* Setting up out color variables for the theme */
-/* timberwolf: #e0e2db; */
+/* bg: #92C9B1; */
 :root {
   --primary: #9AE19D;
   --secondary: #474A48;
@@ -11,25 +11,41 @@
   --warning: #FFC107;
   --info: #17A2B8;
   --border: #E0E0E0;
+  --light-bg: #fffaf1;
+  --bg: #92C9B1;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: 'Raleway', 'sans-serif';
+  margin: 0;
+  height: 100%;
+}
+
+#__nuxt,
+#__layout {
+  height: 100%;
 }
 
 /* Setting up our CSS Grid */
 #__layout > div {
+  height: 100%;
   display: grid;
   font-size: 16px;
   grid-template-areas: 'header header'
                        'aside main'
                        'aside foot';
   grid-template-rows: 64px 1fr auto;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 10% 90%;
 }
 
 header {
   grid-area: header;
   height: 63px;
   line-height: 63px;
-  border-bottom: 1px solid var(--border);
-  position: fixed;
   width: 100%;
 }
 
@@ -50,13 +66,10 @@ header > h1 > small {
 
 aside {
   grid-area: aside;
-  border-right: 1px solid var(--border);
-  background-color: var(--secondary);
-  position: fixed;
-  width: 20%;
+  background-color: var(--bg);
+  width: 100%;
+  height: 100%;
   overflow: auto;
-  height: calc(100% - 66px);
-  top: 70px;
 }
 
 aside > nav ul {
@@ -69,17 +82,15 @@ aside > nav > ul > li {
 }
 
 aside > nav > ul > li > a {
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 20px;
 }
 
 aside > nav a {
-  color: var(--accent);
+  color: var(--dark);
   display: block;
   padding: 0.4rem 1rem;
   text-decoration: none;
   text-overflow: ellipsis;
-  overflow: hidden;
   white-space: nowrap;
   transition: all 0.5s ease;
 }
@@ -89,25 +100,23 @@ aside > nav a:hover {
   background-color: var(--dark);
 }
 
-aside > nav a > small {
-  font-size: 0.75rem;
-  font-style: italic;
-}
-
 main {
   grid-area: main;
   padding: 0 2rem 2rem;
+  height: 100%;
+  background-color: #FFF;
+  border-top: 1px solid var(--border);
 }
 
 footer {
   grid-area: foot;
   padding: 0.5rem 1rem;
   border-top: 1px solid var(--border);
-  background-color: white;
+  background-color: #FFF;
 }
 
 @media (max-width: 40rem) {
-  body {
+  #__layout > div {
     grid-template-columns: 100%;
     grid-template-areas: 'header' 'main' 'aside' 'foot';
   }
@@ -126,7 +135,7 @@ footer {
 .btn--sm,
 .btn--md,
 .btn--lg {
-  background-color: var(--primary);
+  background-color: var(--accent);
   margin: 0;
   padding: 0;
   border-width: 0;
@@ -178,7 +187,6 @@ footer {
   border-width: 0;
   border-color: transparent;
   background: transparent;
-  font-weight: 700;
   cursor: pointer;
   position: relative;
   font-size: 1.25rem;
@@ -186,8 +194,8 @@ footer {
   padding: 0.3rem 0.75rem;
   z-index: 0;
   border: none;
-  background: var(--accent);
-  color: #FFF;
+  background: var(--bg);
+  color: var(--dark);
   -webkit-transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
   transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
 }
@@ -198,7 +206,7 @@ footer {
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--primary);
+  background: var(--dark);
   content: '';
   opacity: 0;
   -webkit-transition: opacity 0.15s ease-out, -webkit-transform 0.15s ease-out;
@@ -213,7 +221,7 @@ footer {
 .btn--fill:hover,
 .btn--fill:focus {
   box-shadow: 0 1px 8px rgba(58,51,53,0.3);
-  color: #fff;
+  color: var(--primary);
   -webkit-transition: all 0.5s cubic-bezier(0.02, 0.01, 0.47, 1);
   transition: all 0.5s cubic-bezier(0.02, 0.01, 0.47, 1);
 }
@@ -233,8 +241,7 @@ footer {
 .anim {
   position: relative;
   z-index: 1;
-  max-width: 350px;
-  width: calc(100% - 2rem);
+  width: 100%;
   vertical-align: top;
   overflow: hidden;
 }
@@ -356,3 +363,52 @@ footer {
 	}
 }
 
+/* Card Styles */
+
+.card {
+  position: relative;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #FFF;
+  background-clip: border-box;
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  margin-top: 1rem;
+}
+
+.card > hr {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.card__body {
+  padding: 1.25rem;
+}
+
+.card__header {
+  background-color: var(--bg);
+  color: var(--dark);
+  border: 1px solid var(--bg);
+}
+
+.card__title {
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+
+.card__subtitle {
+  margin-top: -(0.35rem / 2);
+  margin-bottom: 0.25rem;
+}
+
+.card__text:last-child {
+  margin-bottom: 0;
+}
+
+.card__link:hover {
+  text-decoration: none;
+}
+
+.card__link + .card__link {
+  margin-left: 1.25rem;
+}

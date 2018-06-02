@@ -1,8 +1,10 @@
 <template>
-  <div>
-    <h3>Login</h3>
-    <p>Please fill out the form below and click login</p>
-    <form>
+  <div class="card shrink center">
+    <div class="card__header">
+      <h3 class="card__title">Login</h3>
+      <p class="card__subtitle">Please fill out the form below and click login</p>
+    </div>
+    <form class="card__body">
       <!-- Find a better way to handle this not a fan -->
       <div :class="['anim', { 'anim--filled': emailFilled || email }]">
         <input
@@ -55,5 +57,13 @@ export default {
 <style scoped>
 .btn {
   font-weight: 700;
+}
+.shrink {
+  width: 30%;
+}
+.center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>
