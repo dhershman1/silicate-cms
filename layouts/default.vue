@@ -5,7 +5,7 @@
         <a href="/">
           <img src="/imgs/logo.png" height="30"/>
         </a>
-        Silicate
+        Silicate CMS
         <small>v{{ version }}</small>
       </h1>
     </header>

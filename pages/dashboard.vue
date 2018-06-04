@@ -1,116 +1,106 @@
 <template>
   <section>
-    <div class="row">
-      <div class="col s12">
-        <h1>Dashboard</h1>
-        <h4 class="subtitle">You can edit existing content buckets or create new ones here</h4>
-      </div>
+    <div>
+      <h1>Dashboard</h1>
+      <h4 class="subtitle">You can edit existing content buckets or create new ones here</h4>
     </div>
     <div class="divider"></div>
-    <div class="row">
-      <div class="col s12">
-        <h4 class="title--page">Choose a Page</h4>
-        <ul class="tabs">
-          <li class="tab col" v-for="(p, i) in pageList" :key="i">
-            <a :class="{ active: p.name === page.name }" @click="page = p" :href="`#${p.name}`">{{ p.name }}</a>
-          </li>
-        </ul>
-        <h4 class="title--section" v-if="!isEmpty(page)">Choose a Section</h4>
-        <div class="input-field col s4" v-if="!isEmpty(page)">
-          <select v-model="section" @change="fetchBuckets">
-            <option value="" disabled selected>Select a Section on the page</option>
-            <option v-for="sec in page.sections" :key="sec" :value="sec.toLowerCase()">{{ sec }}</option>
-          </select>
-        </div>
-      </div>
+    <h4 class="title--page">Choose a Page</h4>
+    <ul class="tabs">
+      <li class="tabs__item" v-for="(p, pageName) in pageList" :key="pageName">
+        <a
+          :class="['tabs__link', { 'tabs__link--active': isActive(pageName) }]"
+          @click="selectPage(p, pageName)"
+          :href="`#${pageName}`">
+          {{ pageName | capitalize}}
+        </a>
+      </li>
+    </ul>
+    <div v-if="!isEmpty(page)">
+      <h4 class="title--section">Choose a Section</h4>
+      <select v-model="activeSection" class="control" @change="selectSection">
+        <option value="" disabled selected>Select a Section on the page</option>
+        <option
+          v-for="(sec, secName) in page"
+          :key="secName"
+          :value="secName">
+            {{ secName | capitalize }}
+          </option>
+      </select>
+    </div>
+    <h4 class="title--section" v-if="section">Choose a Bucket</h4>
+    <p v-if="section">Click the edit button to edit a content bucket</p>
+    <div class="card-group" v-if="section">
+      <card-bucket v-for="(b, i) in buckets" :key="i" :data="b" />
     </div>
   </section>
 </template>
 
 <script>
+import { mapActions, mapMutations, mapState } from 'vuex'
+import CardBucket from '~/components/card-bucket'
+import capitalize from 'kyanite/capitalize'
 import isEmpty from 'kyanite/isEmpty'
+import sift from 'kyanite/sift'
 
 export default {
+  components: {
+    CardBucket
+  },
   data () {
     return {
-      section: '',
-      page: {},
-      buckets: []
+      activePage: '',
+      activeSection: ''
     }
   },
   watch: {
     page () {
-      this.section = ''
-      this.buckets = []
-    },
-    section () {
-      this.buckets = []
+      this.setSection('')
+      this.setBuckets([])
+      this.activeSection = ''
     }
+  },
+  filters: {
+    capitalize
   },
   methods: {
     isEmpty,
-    fetchBuckets () {
-      // Make a request for the content buckets living on the back end
-      // For now this will just fake some data
-      console.log('page', this.page)
-      console.log('section', this.section)
-      const data = {
-        home: {
-          header: [
-            {
-              title: 'header content',
-              body: 'This is a content bucket for the header section'
-            },
-            {
-              title: 'header sub-content',
-              body: 'This is some sub content for the header'
-            }
-          ],
-          footer: [
-            {
-              title: 'footer content',
-              body: 'This is some content that lives for the footer section'
-            }
-          ]
-        },
-        about: {
-          header: [
-            {
-              title: 'header content',
-              body: 'This is a content bucket for the header section'
-            },
-            {
-              title: 'header sub-content',
-              body: 'This is some sub content for the header'
-            }
-          ],
-          body: [
-            {
-              title: 'main',
-              body: 'This is a simple headless cms that prides itself on being user friendly, and completely plug and play ready!'
-            }
-          ]
-        }
-      }
-
-      console.log(data[this.page][this.section])
-
-      this.buckets = data[this.page][this.section]
-    }
+    isActive (name) {
+      return this.activePage === name
+    },
+    selectPage (p, name) {
+      this.activePage = name
+      this.setPage(p)
+    },
+    selectSection ($event) {
+      this.setSection($event.target.value)
+      this.setBuckets(this.page[$event.target.value])
+    },
+    ...mapActions('dashboard', ['fetchPages']),
+    ...mapMutations('dashboard', [
+      'setPage',
+      'setBuckets',
+      'setSection'
+    ])
   },
   computed: {
-    pageList () {
-      // Make a call to retrieve a list of pages perhaps, or already provide it on load
-      return [
-        {
-          name: 'Home',
-          sections: ['Header', 'Footer']
-        },
-        {
-          name: 'About',
-          sections: ['Header', 'Body']
-        }
-      ]
+    ...mapState('dashboard', [
+      'pageList',
+      'buckets',
+      'section',
+      'page'
+    ])
+  },
+  beforeMount () {
+    const hash = this.$route.hash.replace('#', '')
+
+    if (isEmpty(this.pageList)) {
+      this.fetchPages()
+    }
+
+    if (hash && !isEmpty(this.pageList)) {
+      this.activePage = hash
+      this.setPage(sift([hash], this.pageList)[hash])
     }
   }
 }
@@ -118,14 +108,10 @@ export default {
 
 
 <style scoped>
-.row h1 {
-  font-size: 3rem;
-  margin-bottom: 0;
-}
 .subtitle {
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 1.5rem;
+  padding-bottom: 0.5rem;
 }
 .title--page {
   font-size: 1.5rem;

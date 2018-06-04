@@ -4,35 +4,24 @@
       <h3 class="card__title">Login</h3>
       <p class="card__subtitle">Please fill out the form below and click login</p>
     </div>
-    <form class="card__body">
-      <!-- Find a better way to handle this not a fan -->
-      <div :class="['anim', { 'anim--filled': emailFilled || email }]">
-        <input
-          id="email"
-          class="anim__field"
-          type="email"
-          name="email"
-          v-model="email"
-          @focus="emailFilled = true"
-          @blur="emailFilled = false">
-        <label class="anim__label" for="email">
-          <span class="anim__label-content">Email Address</span>
-        </label>
-      </div>
-      <div :class="['anim', { 'anim--filled': passFilled || password }]">
-        <input
-          id="password"
-          class="anim__field"
-          type="password"
-          name="password"
-          v-model="password"
-          @focus="passFilled = true"
-          @blur="passFilled = false">
-        <label class="anim__label" for="password">
-          <span class="anim__label-content">Password</span>
-        </label>
-      </div>
-      <button class="btn--fill btn--md" type="button">Login</button>
+    <form class="control card__body" action="/login" method="POST">
+      <label for="email">
+        Email Address
+      </label>
+      <input
+        id="email"
+        type="email"
+        name="email"
+        @keyup="checkLen('email', $event)">
+      <label for="password">
+        Password
+      </label>
+      <input
+        id="password"
+        type="password"
+        name="password"
+        @keyup="checkLen('pass', $event)">
+      <button class="center btn--fill btn--md" type="button">Login</button>
     </form>
   </div>
 </template>
@@ -44,11 +33,15 @@ export default {
   },
   data () {
     return {
-      emailFilled: false,
-      passFilled: false,
-      authed: false,
-      email: '',
-      password: ''
+      filled: {
+        pass: false,
+        email: false
+      }
+    }
+  },
+  methods: {
+    checkLen (field, { target }) {
+      this.filled[field] = Boolean(target.value.length)
     }
   }
 }
@@ -59,6 +52,12 @@ export default {
   font-weight: 700;
 }
 .shrink {
+  width: 30%;
+}
+.text-center {
+  text-align: center;
+}
+button.center {
   width: 30%;
 }
 .center {
