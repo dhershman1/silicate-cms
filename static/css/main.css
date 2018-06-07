@@ -144,7 +144,7 @@ footer {
 .btn--sm,
 .btn--md,
 .btn--lg {
-  background-color: var(--accent);
+  background-color: var(--primary);
   margin: 0;
   padding: 0;
   border-width: 0;
@@ -192,21 +192,22 @@ footer {
 
 .btn--fill {
   margin: 0;
-  padding: 0;
   border-width: 0;
   border-color: transparent;
   background: transparent;
   cursor: pointer;
   position: relative;
-  font-size: 1.25rem;
   font-family: inherit;
-  padding: 0.3rem 0.75rem;
   z-index: 0;
   border: none;
   background: var(--bg);
   color: var(--dark);
   -webkit-transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
   transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+}
+
+.btn--fill i {
+  font-size: 16px;
 }
 
 .btn--fill:before {
@@ -370,7 +371,7 @@ select:focus {
 }
 /* END Select Styles */
 
-/* Bucket Editor Style */
+/* Form Control Style */
 .control label {
   color: var(--dark);
   font-weight: 600;
@@ -401,4 +402,43 @@ select:focus {
 .control button i {
   font-size: 16px;
 }
-/* END Bucket Editor Styles */
+/* END Form Control Styles */
+
+/* Table Styles */
+table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+th {
+  border-bottom: 1px solid var(--border);
+}
+
+.content {
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.content:last-child {
+  border-bottom: 0;
+}
+
+.content td {
+  padding: 0.5rem 0;
+}
+
+.content td a {
+  text-decoration: none;
+}
+
+.content td a:hover {
+  color: var(--primary);
+}
+
+tr.content:hover {
+  background-color: var(--dark);
+  color: var(--primary);
+}
+/* END Table Styles */

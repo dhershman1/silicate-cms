@@ -15,6 +15,9 @@
           {{ pageName | capitalize}}
         </a>
       </li>
+      <li class="tabs__item" title="Add a new page">
+        <a href="#new" class="tabs__link" @click="addPage"><i class="icon-plus"></i></a>
+      </li>
     </ul>
     <div v-if="!isEmpty(page)">
       <h4 class="title--section">Choose a Section</h4>
@@ -28,24 +31,27 @@
           </option>
       </select>
     </div>
-    <h4 class="title--section" v-if="section">Choose a Bucket</h4>
-    <p v-if="section">Click the edit button to edit a content bucket</p>
-    <div class="card-group" v-if="section">
-      <card-bucket v-for="(b, i) in buckets" :key="i" :data="b" />
+    <div v-if="section">
+      <h4 class="title--section">Choose a Bucket</h4>
+      <p>
+        Click the edit button to edit a content bucket, or add a new one:
+        <button class="btn--fill btn--sm"><i class="icon-plus"></i> Add</button>
+      </p>
+      <bucket-table :data="buckets" :page="activePage" :section="activeSection" />
     </div>
   </section>
 </template>
 
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex'
-import CardBucket from '~/components/card-bucket'
+import BucketTable from '~/components/bucket-table'
 import capitalize from 'kyanite/capitalize'
 import isEmpty from 'kyanite/isEmpty'
 import sift from 'kyanite/sift'
 
 export default {
   components: {
-    CardBucket
+    BucketTable
   },
   data () {
     return {
@@ -67,6 +73,11 @@ export default {
     isEmpty,
     isActive (name) {
       return this.activePage === name
+    },
+    addPage () {
+      // This will probably be removed, just go to a page to create a new one
+      // Creating a page is also where you will create sections
+      console.log('Click!')
     },
     selectPage (p, name) {
       this.activePage = name
