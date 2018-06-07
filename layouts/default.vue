@@ -3,10 +3,10 @@
     <header>
       <h1>
         <a href="/">
-          <img src="/imgs/logo.png" height="30"/>
+          <img :src="logo" height="30"/>
         </a>
-        Silicate CMS
-        <small>v{{ version }}</small>
+        {{ title }}
+        <small v-if="showVers">v{{ version }}</small>
       </h1>
     </header>
     <aside role="navigation">
@@ -32,13 +32,15 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { version } from '~/package.json'
 
 export default {
   computed: {
     version () {
       return version
-    }
+    },
+    ...mapState('settings', ['title', 'showVers', 'logo'])
   }
 }
 </script>
