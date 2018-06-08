@@ -13,7 +13,7 @@
       <td>{{ d.lastEdited }}</td>
       <td>{{ d.editedBy }}</td>
       <td>
-        <a :href="`/bucket/${page}/${section}/${d.id}`" class="btn--fill btn--sm">Edit <i class="icon-pencil"></i></a>
+        <a :href="`/edit/${page}/${section}/${d.id}`" class="btn--fill btn--sm">Edit <i class="icon-pencil"></i></a>
       </td>
     </tr>
   </table>
