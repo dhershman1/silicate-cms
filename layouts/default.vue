@@ -22,6 +22,9 @@
             <router-link :to="'/help'"><i class="icon-lifebuoy"></i> Help</router-link>
           </li>
           <li>
+            <router-link :to="'/settings'"><i class="icon-cogs"></i> Settings</router-link>
+          </li>
+          <li>
             <router-link :to="'/'"><i class="icon-key"></i> Login</router-link>
           </li>
         </ul>
