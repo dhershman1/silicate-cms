@@ -179,7 +179,7 @@ footer {
 }
 
 .btn--sm {
-  padding: 0.25rem 0.6rem;
+  padding: 0.25rem 0.5rem;
   font-size: 16px;
   font-family: inherit;
 }
@@ -451,5 +451,9 @@ tr.content:hover {
 
 td button {
   border-radius: 0.4rem;
+}
+
+td .btn--fill:before {
+  border-radius: 0.15rem;
 }
 /* END Table Styles */
