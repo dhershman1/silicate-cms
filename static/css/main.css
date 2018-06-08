@@ -396,6 +396,7 @@ select:focus {
 }
 
 .control button {
+  margin-top: 0.35rem;
   display: block;
 }
 

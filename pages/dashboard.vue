@@ -6,7 +6,7 @@
     </div>
     <div class="divider"></div>
     <h4 class="title--page">Choose a Page</h4>
-    <ul class="tabs">
+    <ul class="tabs" v-if="!useSelect">
       <li class="tabs__item" v-for="(p, pageName) in pageList" :key="pageName">
         <a
           :class="['tabs__link', { 'tabs__link--active': isActive(pageName) }]"
@@ -19,6 +19,16 @@
         <a href="#new" class="tabs__link" @click="addPage"><i class="icon-plus"></i></a>
       </li>
     </ul>
+    <select class="control" v-else>
+      <option value="" disabled selected>Select a Page</option>
+      <option
+        v-for="(p, pageName) in pageList"
+        :key="pageName"
+        @click="selectPage(p, pageName)"
+        :value="pageName">
+        {{ pageName | capitalize }}
+      </option>
+    </select>
     <div v-if="!isEmpty(page)">
       <h4 class="title--section">Choose a Section</h4>
       <select v-model="activeSection" class="control" @change="selectSection">
@@ -46,6 +56,7 @@
 import { mapActions, mapMutations, mapState } from 'vuex'
 import BucketTable from '~/components/bucket-table'
 import capitalize from 'kyanite/capitalize'
+import height from 'kyanite/height'
 import isEmpty from 'kyanite/isEmpty'
 import sift from 'kyanite/sift'
 
@@ -95,6 +106,9 @@ export default {
     ])
   },
   computed: {
+    useSelect () {
+      return height(this.pageList) > 10
+    },
     ...mapState('dashboard', [
       'pageList',
       'buckets',
