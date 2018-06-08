@@ -6,6 +6,7 @@
     </div>
     <div class="divider"></div>
     <h4 class="title--page">Choose a Page</h4>
+    <button class="btn--fill btn--md">Edit Page <i class="icon-pencil"></i></button>
     <ul class="tabs" v-if="!useSelect">
       <li class="tabs__item" v-for="(p, pageName) in pageList" :key="pageName">
         <a
@@ -31,6 +32,7 @@
     </select>
     <div v-if="!isEmpty(page)">
       <h4 class="title--section">Choose a Section</h4>
+      <p>You can edit the sections of a page, by editing the page itself</p>
       <select v-model="activeSection" class="control" @change="selectSection">
         <option value="" disabled selected>Select a Section on the page</option>
         <option
