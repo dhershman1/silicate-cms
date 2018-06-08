@@ -16,7 +16,7 @@
           type="text"
           name="title"
           :value="title"
-          @change="setTitle($event.target.value)" />
+          @keyup="setTitle($event.target.value)" />
         <label for="showVers">
           Show Version
         </label>
