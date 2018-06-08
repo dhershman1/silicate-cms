@@ -6,7 +6,7 @@
     </div>
     <div class="divider"></div>
     <h4 class="title--page">Choose a Page</h4>
-    <ul class="tabs" v-if="!useSelect">
+    <ul class="tabs" v-if="!replaceTabs">
       <li class="tabs__item" v-for="(p, pageName) in pageList" :key="pageName">
         <a
           :class="['tabs__link', { 'tabs__link--active': isActive(pageName) }]"
@@ -29,28 +29,17 @@
         {{ pageName | capitalize }}
       </option>
     </select>
-    <div class="mt" v-if="!isEmpty(page)">
+    <div class="mt" v-if="page">
       <button @click="$router.push(`edit/${activePage}`)" class="btn--fill btn--md">
         Edit {{ activePage | capitalize }} Page <i class="icon-pencil"></i>
       </button>
-      <h4 class="title--section">Choose a Section</h4>
-      <select v-model="activeSection" class="control" @change="selectSection">
-        <option value="" disabled selected>Select a Section on the page</option>
-        <option
-          v-for="(sec, secName) in page"
-          :key="secName"
-          :value="secName">
-            {{ secName | capitalize }}
-          </option>
-      </select>
-    </div>
-    <div v-if="section">
       <h4 class="title--section">Choose a Bucket</h4>
       <p>
-        Click the edit button to edit a content bucket, or add a new one:
-        <button class="btn--fill btn--sm"><i class="icon-plus"></i> Add</button>
+        Click the edit button to edit a content bucket, or 
+        <button class="btn--fill btn--sm"><i class="icon-plus"></i> Create New Bucket</button>
       </p>
-      <bucket-table :data="buckets" :page="activePage" :section="activeSection" />
+      <bucket-table v-if="buckets.length" />
+      <h3 v-else>You haven't created and content buckets yet, click the add button above to get started!</h3>
     </div>
   </section>
 </template>
@@ -69,15 +58,7 @@ export default {
   },
   data () {
     return {
-      activePage: '',
-      activeSection: ''
-    }
-  },
-  watch: {
-    page () {
-      this.setSection('')
-      this.setBuckets([])
-      this.activeSection = ''
+      activePage: ''
     }
   },
   filters: {
@@ -93,32 +74,26 @@ export default {
     },
     addPage () {
       // This will probably be removed, just go to a page to create a new one
-      // Creating a page is also where you will create sections
       console.log('Click!')
     },
     selectPage (p, name) {
       this.activePage = name
-      this.setPage(p)
-    },
-    selectSection ($event) {
-      this.setSection($event.target.value)
-      this.setBuckets(this.page[$event.target.value])
+      this.setPage(name)
+      this.setBuckets(p)
     },
     ...mapActions('dashboard', ['fetchPages']),
     ...mapMutations('dashboard', [
       'setPage',
-      'setBuckets',
-      'setSection'
+      'setBuckets'
     ])
   },
   computed: {
-    useSelect () {
+    replaceTabs () {
       return height(this.pageList) > 10
     },
     ...mapState('dashboard', [
       'pageList',
       'buckets',
-      'section',
       'page'
     ])
   },
@@ -129,9 +104,11 @@ export default {
       this.fetchPages()
     }
 
+    // Make sure we use the hash to remember the stuff we forgot on refresh
     if (hash && !isEmpty(this.pageList)) {
       this.activePage = hash
-      this.setPage(sift([hash], this.pageList)[hash])
+      this.setPage(hash)
+      this.setBuckets(sift([hash], this.pageList)[hash])
     }
   }
 }
