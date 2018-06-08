@@ -5,7 +5,14 @@ export const state = () => ({
 })
 
 export const mutations = {
-  setSetting (state, { id, value }) {
-    state[id] = value
+  setTitle (state, val) {
+    state.title = val
+  },
+  setShowVers (state, bool) {
+    console.log(bool)
+    state.showVers = bool
+  },
+  setLogo (state, payload) {
+    state.logo = payload
   }
 }
