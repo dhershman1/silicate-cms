@@ -2,6 +2,20 @@
 
 A simple locally hosted headless CMS. I planned to use this for myself on any future projects that required something like this, however the license is MIT and the plan it to keep it that way, so as it comes along feel free to use it for yourself!
 
+## How To
+
+Currently the project is not being hosted (We're still in heavy development) with the lack of more legit functionality.
+
+However if you'd like to preview some of the UI pieces and give some feedback here's how you can locally run the CMS:
+
+- `clone` this repo
+- `cd` into the repo directory
+- Run `npm i`
+- Run `npm run dev`
+- Go to `localhost:3000`
+
+There are no current permission or authentication blockers so whatever UI currently exists is accessible!
+
 ## Features (Current and Planned)
 
 - Complete Accessibility following WCAG Standards
@@ -23,4 +37,4 @@ Granted, there are plenty of headless CMS tools to give you this advantage as we
 
 ## Technology
 
-Built on [Nuxt](https://nuxtjs.org/). Hand crafted styles, and taking advantage of the CSS Grid system
+Built on [Nuxt](https://nuxtjs.org/). Hand crafted styles, and taking advantage of the [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout) system
