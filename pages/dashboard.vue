@@ -6,7 +6,6 @@
     </div>
     <div class="divider"></div>
     <h4 class="title--page">Choose a Page</h4>
-    <button class="btn--fill btn--md">Edit Page <i class="icon-pencil"></i></button>
     <ul class="tabs" v-if="!useSelect">
       <li class="tabs__item" v-for="(p, pageName) in pageList" :key="pageName">
         <a
@@ -30,9 +29,11 @@
         {{ pageName | capitalize }}
       </option>
     </select>
-    <div v-if="!isEmpty(page)">
+    <div class="mt" v-if="!isEmpty(page)">
+      <button @click="$router.push(`edit/${activePage}`)" class="btn--fill btn--md">
+        Edit {{ activePage | capitalize }} Page <i class="icon-pencil"></i>
+      </button>
       <h4 class="title--section">Choose a Section</h4>
-      <p>You can edit the sections of a page, by editing the page itself</p>
       <select v-model="activeSection" class="control" @change="selectSection">
         <option value="" disabled selected>Select a Section on the page</option>
         <option
@@ -87,6 +88,9 @@ export default {
     isActive (name) {
       return this.activePage === name
     },
+    editor (pageName) {
+      this.$route.push(`edit/${pageName}`)
+    },
     addPage () {
       // This will probably be removed, just go to a page to create a new one
       // Creating a page is also where you will create sections
@@ -135,6 +139,9 @@ export default {
 
 
 <style scoped>
+.mt {
+  margin-top: 0.35rem;
+}
 .subtitle {
   margin-top: 0;
   margin-bottom: 0;

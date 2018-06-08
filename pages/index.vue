@@ -1,7 +1,7 @@
 <template>
   <div class="card shrink center">
     <div class="card__header">
-      <h3 class="card__title">Login</h3>
+      <h2 class="card__title">Login</h2>
       <p class="card__subtitle">Please fill out the form below and click login</p>
     </div>
     <form class="control card__body" action="/login" method="POST">
@@ -11,16 +11,14 @@
       <input
         id="email"
         type="email"
-        name="email"
-        @keyup="checkLen('email', $event)">
+        name="email">
       <label for="password">
         Password
       </label>
       <input
         id="password"
         type="password"
-        name="password"
-        @keyup="checkLen('pass', $event)">
+        name="password">
       <button class="center btn--fill btn--md" type="button">Login</button>
     </form>
   </div>
@@ -30,19 +28,6 @@
 export default {
   head: {
     title: 'Silicate CMS - Login'
-  },
-  data () {
-    return {
-      filled: {
-        pass: false,
-        email: false
-      }
-    }
-  },
-  methods: {
-    checkLen (field, { target }) {
-      this.filled[field] = Boolean(target.value.length)
-    }
   }
 }
 </script>

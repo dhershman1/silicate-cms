@@ -19,6 +19,7 @@
 /* Primary Setup */
 html {
   height: 100%;
+  color: var(--dark);
 }
 
 body {
@@ -56,6 +57,11 @@ header {
   height: 63px;
   line-height: 63px;
   width: 100%;
+}
+
+.logo-text {
+  text-decoration: none;
+  color: var(--dark);
 }
 
 header > h1 {
@@ -441,5 +447,9 @@ th {
 tr.content:hover {
   background-color: var(--dark);
   color: var(--primary);
+}
+
+td button {
+  border-radius: 0.4rem;
 }
 /* END Table Styles */

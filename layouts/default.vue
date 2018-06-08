@@ -2,10 +2,10 @@
   <div>
     <header>
       <h1>
-        <a href="/">
-          <img :src="logo" height="30"/>
-        </a>
-        {{ title }}
+        <router-link class="logo-text" :to="'/'">
+          <img :src="logo" height="30" alt="Logo Image"/>
+          {{ title }}
+        </router-link>
         <small v-if="showVers">v{{ version }}</small>
       </h1>
     </header>
@@ -13,13 +13,16 @@
       <nav>
         <ul>
           <li>
-            <a href="/dashboard"><i class="icon-meter"></i> Dashboard</a>
+            <router-link :to="'/dashboard'"><i class="icon-meter"></i> Dashboard</router-link>
           </li>
           <li>
-            <a href="/users"><i class="icon-users"></i> Users</a>
+            <router-link :to="'/users'"><i class="icon-users"></i> Users</router-link>
           </li>
           <li>
-            <a href="/"><i class="icon-key"></i> Login</a>
+            <router-link :to="'/help'"><i class="icon-lifebuoy"></i> Help</router-link>
+          </li>
+          <li>
+            <router-link :to="'/'"><i class="icon-key"></i> Login</router-link>
           </li>
         </ul>
       </nav>
