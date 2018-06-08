@@ -10,8 +10,6 @@ export const state = () => ({
 
 export const getters = {
   sortBuckets ({ isDesc, sortBy, buckets }) {
-    console.log('Sorting by:', sortBy)
-
     const ASC = (a, b) => {
       const valA = a[sortBy]
       const valB = b[sortBy]

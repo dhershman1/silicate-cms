@@ -27,6 +27,7 @@
           name="showVers"
           :checked="showVers"
           @change="setShowVers($event.target.checked)" />
+          <button class="center btn--fill btn--md"><i class="icon-floppy-disk"></i> Save</button>
       </form>
     </div>
   </section>
@@ -61,7 +62,7 @@ label {
   margin-right: auto;
 }
 .control button {
-  width: 50%;
+  width: 30%;
 }
 .control p {
   margin: 0.2rem;
