@@ -35,7 +35,7 @@
       </button>
       <h4 class="title--section">Choose a Bucket</h4>
       <p>
-        Click the edit button to edit a content bucket, or 
+        Click the edit button to edit a content bucket, or
         <button class="btn--fill btn--sm"><i class="icon-plus"></i> Create New Bucket</button>
       </p>
       <bucket-table v-if="buckets.length" />

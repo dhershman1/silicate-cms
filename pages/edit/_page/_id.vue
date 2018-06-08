@@ -7,7 +7,6 @@
     <p>Body: {{ body }}</p>
     <p>Last Edited: {{ lastEdited }}</p>
     <p>Edited By: {{ editedBy }}</p>
-
   </div>
 </template>
 
