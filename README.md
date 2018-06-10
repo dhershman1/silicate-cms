@@ -1,5 +1,7 @@
 # Silicate Headless CMS
 
+[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
+
 A simple locally hosted headless CMS. I planned to use this for myself on any future projects that required something like this, however the license is MIT and the plan it to keep it that way, so as it comes along feel free to use it for yourself!
 
 ## How To
