@@ -9,7 +9,6 @@ export const mutations = {
     state.title = val
   },
   setShowVers (state, bool) {
-    console.log(bool)
     state.showVers = bool
   },
   setLogo (state, payload) {
