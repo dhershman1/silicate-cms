@@ -77,6 +77,8 @@ export default {
   methods: {
     ...mapMutations('dashboard', ['setSortBy', 'setDesc']),
     handleSortSetup (by) {
+      // This is probably way more complicated than it needs to be?
+      // TODO: Sweep back to this for some cleanup to much going on, to many branches
       if (this.sortBy !== by) {
         this.iconStates = assign({}, this.iconStates, {
           id: false,
