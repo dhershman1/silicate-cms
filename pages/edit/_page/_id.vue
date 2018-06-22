@@ -11,31 +11,11 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import identity from 'kyanite/identity'
 
 export default {
-  data () {
-    return {
-      title: '',
-      type: '',
-      body: '',
-      lastEdited: '',
-      editedBy: ''
-    }
-  },
-  methods: {
-    ...mapActions('bucket', ['fetchBucket'])
-  },
-  beforeMount () {
-    // Instead of doing this, let's just build out some middleware so
-    // Nuxt can serve up the page with this data already populated!
-    this.fetchBucket(this.$route.params).then(d => {
-      this.body = d.body
-      this.title = d.title
-      this.lastEdited = d.lastEdited
-      this.editedBy = d.editedBy
-      this.type = d.type
-    })
+  asyncData ({ params, store }) {
+    return store.dispatch('bucket/fetchBucket', params).then(identity)
   }
 }
 </script>

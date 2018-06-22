@@ -13,7 +13,8 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "kyanite": "0.1.0",
+    "axios": "0.18.0",
+    "kyanite": "0.2.2",
     "nuxt": "1.4.0"
   },
   "devDependencies": {

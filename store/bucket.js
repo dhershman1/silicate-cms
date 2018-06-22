@@ -1,10 +1,10 @@
 export const state = () => ({
-  bucket: {}
+  current: {}
 })
 
 export const mutations = {
   setBucket (state, payload) {
-    state.bucket = payload
+    state.current = payload
   }
 }
 
