@@ -1,4 +1,6 @@
 import sort from 'kyanite/sort'
+import descendBy from 'kyanite/descendBy'
+import ascendBy from 'kyanite/ascendBy'
 
 export const state = () => ({
   pageList: [],
@@ -10,41 +12,14 @@ export const state = () => ({
 
 export const getters = {
   sortBuckets ({ isDesc, sortBy, buckets }) {
-    const ASC = (a, b) => {
-      const valA = a[sortBy]
-      const valB = b[sortBy]
-
-      if (valA < valB) {
-        return -1
-      }
-
-      if (valA > valB) {
-        return 1
-      }
-
-      return 0
-    }
-
-    const DESC = (a, b) => {
-      const valA = a[sortBy]
-      const valB = b[sortBy]
-
-      if (valA > valB) {
-        return -1
-      }
-
-      if (valA < valB) {
-        return 1
-      }
-
-      return 0
-    }
+    const asc = ascendBy(x => x[sortBy])
+    const desc = descendBy(x => x[sortBy])
 
     if (isDesc) {
-      return sort(DESC, buckets)
+      return sort(asc, buckets)
     }
 
-    return sort(ASC, buckets)
+    return sort(desc, buckets)
   }
 }
 

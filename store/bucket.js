@@ -13,52 +13,58 @@ const data = {
     {
       id: 1,
       title: 'header content',
-      type: 'Text',
+      type: 'text',
       editedBy: 'Dustin',
       lastEdited: '6/5/2018',
-      body: 'This is a content bucket for the header section'
+      content: 'This is a content bucket for the header section',
+      file: ''
     },
     {
       id: 2,
       title: 'header sub-content',
-      type: 'Text',
+      type: 'text',
       editedBy: 'Dustin',
       lastEdited: '6/5/2018',
-      body: 'This is some sub content for the header'
+      content: 'This is some sub content for the header',
+      file: ''
     },
     {
       id: 3,
       title: 'footer content',
-      type: 'Text',
+      type: 'text',
       editedBy: 'Dustin',
       lastEdited: '6/7/2018',
-      body: 'This is some content that lives for the footer section'
+      content: 'This is some content that lives for the footer section',
+      file: ''
     }
   ],
   about: [
     {
       id: 1,
       title: 'header content',
-      type: 'Text',
+      type: 'text',
       editedBy: 'Dustin',
       lastEdited: '6/6/2018',
-      body: 'This is a content bucket for the header section'
+      content: 'This is a content bucket for the header section',
+      file: ''
     },
     {
       id: 2,
       title: 'header sub-content',
-      type: 'Text',
+      type: 'text',
       editedBy: 'Dustin',
       lastEdited: '6/5/2018',
-      body: 'This is some sub content for the header'
+      content: 'This is some sub content for the header',
+      file: ''
     },
     {
       id: 3,
       title: 'main',
-      type: 'Text',
+      type: 'text',
       editedBy: 'Dustin',
       lastEdited: '6/4/2018',
-      body: 'This is a simple headless cms that prides itself on being user friendly, and completely plug and play ready!'
+      content: 'This is a simple headless cms that prides itself on being user friendly, and completely plug and play ready!',
+      file: ''
     }
   ]
 }
