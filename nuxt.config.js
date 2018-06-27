@@ -23,6 +23,9 @@ module.exports = {
       }
     ]
   },
+  // serverMiddleware: [
+  //   { path: '/api', handler: '~/api/uploads.js' }
+  // ],
   css: ['@/static/css/font-face.css', '@/static/css/main.css'],
   /*
   ** Customize the progress bar color
