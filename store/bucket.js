@@ -71,7 +71,7 @@ const data = {
 }
 
 export const actions = {
-  fetchBucket ({ commit }, { page, section, id }) {
+  fetchBucket ({ commit }, { page, id }) {
     return new Promise(resolve => {
       const d = data[page].find(val => Number(val.id) === Number(id))
 

@@ -30,8 +30,8 @@
       </option>
     </select>
     <div class="mt" v-if="page">
-      <button @click="$router.push(`edit/${activePage}`)" class="btn--fill btn--md">
-        Edit {{ activePage | capitalize }} Page <i class="icon-pencil"></i>
+      <button @click="$router.push(`edit/${page}`)" class="btn--fill btn--md">
+        Edit {{ page | capitalize }} Page <i class="icon-pencil"></i>
       </button>
       <h4 class="title--section">Choose a Bucket</h4>
       <p>
@@ -56,18 +56,13 @@ export default {
   components: {
     BucketTable
   },
-  data () {
-    return {
-      activePage: ''
-    }
-  },
   filters: {
     capitalize
   },
   methods: {
     isEmpty,
     isActive (name) {
-      return this.activePage === name
+      return this.page === name
     },
     editor (pageName) {
       this.$route.push(`edit/${pageName}`)
@@ -77,7 +72,6 @@ export default {
       console.log('Click!')
     },
     selectPage (p, name) {
-      this.activePage = name
       this.setPage(name)
       this.setBuckets(p)
     },
@@ -106,7 +100,6 @@ export default {
 
     // Make sure we use the hash to remember the stuff we forgot on refresh
     if (hash && !isEmpty(this.pageList)) {
-      this.activePage = hash
       this.setPage(hash)
       this.setBuckets(sift([hash], this.pageList)[hash])
     }
