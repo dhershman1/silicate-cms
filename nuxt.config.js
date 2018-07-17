@@ -1,3 +1,6 @@
+const bodyParser = require('body-parser')
+const session = require('express-session')
+
 module.exports = {
   mode: 'spa',
   /*
@@ -23,9 +26,16 @@ module.exports = {
       }
     ]
   },
-  // serverMiddleware: [
-  //   { path: '/api', handler: '~/api/uploads.js' }
-  // ],
+  serverMiddleware: [
+    bodyParser.json(),
+    session({
+      secret: 'super-spoop-secret',
+      resave: false,
+      saveUninitialized: false,
+      cookie: { maxAge: 60000 }
+    }),
+    '~/api/auth'
+  ],
   css: ['@/static/css/font-face.css', '@/static/css/main.css'],
   /*
   ** Customize the progress bar color

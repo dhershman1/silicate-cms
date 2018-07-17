@@ -56,6 +56,7 @@ export default {
   components: {
     BucketTable
   },
+  middleware: 'auth',
   filters: {
     capitalize
   },
