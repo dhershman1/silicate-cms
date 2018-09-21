@@ -53,7 +53,7 @@ import isEmpty from 'kyanite/isEmpty'
 import sift from 'kyanite/sift'
 
 export default {
-  loading: false,
+  transition: 'fade',
   components: {
     BucketTable
   },

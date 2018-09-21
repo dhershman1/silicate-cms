@@ -465,3 +465,56 @@ select:focus {
   border-radius: 0.15rem;
 }
 /* END Table Styles */
+
+/* Transition Styles */
+.anime {
+  animation-duration: 500ms;
+  animation-fill-mode: both;
+}
+
+.anime--fast {
+  animation-duration: 300ms;
+}
+
+.anime--slow {
+  animation-duration: 1s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.anime--fade-in,
+.fade-enter-active {
+  animation: fadeIn 300ms both;
+}
+
+.anime--fade-out,
+.fade-leave-active {
+  animation: fadeOut 300ms both;
+}
+
+/* Disable animations all together if the user prefers it */
+@media (prefers-reduced-motion) {
+  .anime {
+    animation: unset !important;
+    transition: none !important;
+  }
+}
+/* END Transition Styles */

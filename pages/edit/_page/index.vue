@@ -27,7 +27,7 @@ import { mapActions, mapMutations, mapState } from 'vuex'
 import isEmpty from 'kyanite/isEmpty'
 
 export default {
-  loading: false,
+  transition: 'fade',
   data () {
     return {
       currentTitle: this.$route.params.page

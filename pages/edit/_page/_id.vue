@@ -47,7 +47,7 @@
 import identity from 'kyanite/identity'
 
 export default {
-  loading: false,
+  transition: 'fade',
   asyncData ({ params, store }) {
     return store.dispatch('bucket/fetchBucket', params).then(identity)
   },

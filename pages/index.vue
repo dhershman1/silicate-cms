@@ -38,7 +38,7 @@
 import { mapActions, mapState } from 'vuex'
 
 export default {
-  loading: false,
+  transition: 'fade',
   head: {
     title: 'Silicate CMS - Login'
   },

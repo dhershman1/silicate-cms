@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  loading: false
+  transition: 'fade'
 }
 </script>
 

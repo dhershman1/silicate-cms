@@ -50,7 +50,7 @@
 import { mapMutations, mapState } from 'vuex'
 
 export default {
-  loading: false,
+  transition: 'fade',
   computed: {
     ...mapState('settings', ['title', 'showVers', 'logo'])
   },
