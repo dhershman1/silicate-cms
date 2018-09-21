@@ -4,6 +4,17 @@
 
 A simple locally hosted headless CMS. I planned to use this for myself on any future projects that required something like this, however the license is MIT and the plan it to keep it that way, so as it comes along feel free to use it for yourself!
 
+## Support
+
+| Browser  | Support |
+| -------- | -------- |
+| Firefox  | 52+  |
+| Chrome  | 57+  |
+| Safari  | 10.1+  |
+| Edge  | 16+  |
+| Opera  | 44+  |
+| Internet Explorer  | Not Supported  |
+
 ## How To
 
 Currently the project is not being hosted (We're still in heavy development) with the lack of more legit functionality.
@@ -31,7 +42,7 @@ There are no current permission or authentication blockers so whatever UI curren
 
 ## Philosophy
 
-The goal for Silicate is not to re invent the wheel so to speak, but to build upon and improve where it can to become a useful and easy to learn tool in your web development world. 
+The goal for Silicate is not to re invent the wheel so to speak, but to build upon and improve where it can to become a useful and easy to learn tool in your web development world.
 
 Making client work easy to serve up so your clients can still edit their site when you're done, without needing to be on something like WordPress.
 

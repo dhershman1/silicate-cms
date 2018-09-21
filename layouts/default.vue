@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-content">
     <header>
       <h1>
         <router-link class="logo-text" :to="'/'">

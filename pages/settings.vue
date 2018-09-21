@@ -6,24 +6,37 @@
     </div>
     <div class="card__body">
       <form class="control">
-        <label for="logo">Logo Image</label>
-        <p>Change the CMS logo in the top right corner</p>
-        <input id="lgo" type="file" name="logo" />
-        <label for="title">CMS Title</label>
-        <p>Change the text title that displays in the top right corner</p>
+        <label class="control__label" for="logo">
+          Logo Image
+        </label>
+        <p class="control__text">
+          Change the CMS logo in the top right corner
+        </p>
+        <input class="control__input" id="lgo" type="file" name="logo" />
+
+        <label class="control__label" for="title">
+          CMS Title
+        </label>
+        <p class="control__text">
+          Change the text title that displays in the top right corner
+        </p>
         <input
           id="title"
+          class="control__input"
           type="text"
           name="title"
           :value="title"
           @keyup="setTitle($event.target.value)" />
-        <label for="showVers">
+        <label class="control__label" for="showVers">
           Show Version
         </label>
-        <p>Show the version number next to the Title in the top right corner</p>
+        <p class="control__text">
+          Show the version number next to the Title in the top right corner
+        </p>
         <input
           id="showVers"
           type="checkbox"
+          class="control__input"
           name="showVers"
           :checked="showVers"
           @change="setShowVers($event.target.checked)" />
@@ -37,6 +50,7 @@
 import { mapMutations, mapState } from 'vuex'
 
 export default {
+  loading: false,
   computed: {
     ...mapState('settings', ['title', 'showVers', 'logo'])
   },
@@ -61,10 +75,10 @@ label {
   margin-left: auto;
   margin-right: auto;
 }
-.control button {
+.control__button {
   width: 30%;
 }
-.control p {
+.control__text {
   margin: 0.2rem;
 }
 #showVers {

@@ -4,24 +4,26 @@
       <h2 class="card__title">Login</h2>
       <p class="card__subtitle">Please fill out the form below and click login</p>
     </div>
-    <form class="control card__body" v-if="!authUser" @submit.prevent="runLogin">
-      <label for="email">
+    <form class="card__body" v-if="!authUser" @submit.prevent="runLogin">
+      <label class="control__label" for="email">
         Email Address
       </label>
       <input
         v-model="formEmail"
         id="email"
+        class="control__input"
         type="email"
         name="email">
-      <label for="password">
+      <label class="control__label" for="password">
         Password
       </label>
       <input
         v-model="formPass"
         id="password"
+        class="control__input"
         type="password"
         name="password">
-      <button class="center btn--fill btn--md" type="submit">Login</button>
+      <button class="center control__btn btn--fill btn--md" type="submit">Login</button>
     </form>
     <div v-else>
       Hello {{ authUser.username }}!
@@ -36,6 +38,7 @@
 import { mapActions, mapState } from 'vuex'
 
 export default {
+  loading: false,
   head: {
     title: 'Silicate CMS - Login'
   },

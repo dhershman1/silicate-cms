@@ -53,10 +53,11 @@ import isEmpty from 'kyanite/isEmpty'
 import sift from 'kyanite/sift'
 
 export default {
+  loading: false,
   components: {
     BucketTable
   },
-  middleware: 'auth',
+  // middleware: 'auth',
   filters: {
     capitalize
   },

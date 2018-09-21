@@ -5,8 +5,9 @@
     </div>
     <div class="card__body">
       <form class="control">
-        <label for="pageTitle">Page Title</label>
+        <label class="control__label" for="pageTitle">Page Title</label>
         <input
+          class="control__input"
           id="pageTitle"
           type="text"
           name="pageTitle"
@@ -26,6 +27,7 @@ import { mapActions, mapMutations, mapState } from 'vuex'
 import isEmpty from 'kyanite/isEmpty'
 
 export default {
+  loading: false,
   data () {
     return {
       currentTitle: this.$route.params.page

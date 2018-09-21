@@ -1,37 +1,39 @@
 <template>
-  <table>
-    <tr>
-      <th class="sortable" @click="handleSortSetup('id')">
+  <table class="table">
+    <tr class="table__row">
+      <th class="sortable table__head" @click="handleSortSetup('id')">
         <i :class="idIcon"></i> ID
       </th>
-      <th class="sortable" @click="handleSortSetup('title')">
+      <th class="sortable table__head" @click="handleSortSetup('title')">
         <i :class="titleIcon"></i> Title
       </th>
-      <th class="sortable" @click="handleSortSetup('type')">
+      <th class="sortable table__head" @click="handleSortSetup('type')">
         <i :class="typeIcon"></i> Type
       </th>
-      <th class="sortable" @click="handleSortSetup('lastEdited')">
+      <th class="sortable table__head" @click="handleSortSetup('lastEdited')">
         <i :class="lastEditedIcon"></i> Last Edited
       </th>
-      <th class="sortable" @click="handleSortSetup('editedBy')">
+      <th class="sortable table__head" @click="handleSortSetup('editedBy')">
         <i :class="editedByIcon"></i> Edited By
       </th>
-      <th>Edit</th>
-      <th>Delete</th>
+      <th class="table__head">Edit</th>
+      <th class="table__head">Delete</th>
     </tr>
-    <tr class="content" v-for="(d, i) in sortBuckets" :key="i">
-      <td>{{ d.id }}</td>
-      <td>{{ d.title }}</td>
-      <td>{{ d.type }}</td>
-      <td>{{ d.lastEdited }}</td>
-      <td>{{ d.editedBy }}</td>
-      <td>
-        <button @click="$router.push(`/edit/${page}/${d.id}`)" class="btn--fill btn--sm">
+    <tr class="table__row" v-for="(d, i) in sortBuckets" :key="i">
+      <td class="table__data">{{ d.id }}</td>
+      <td class="table__data">{{ d.title }}</td>
+      <td class="table__data">{{ d.type }}</td>
+      <td class="table__data">{{ d.lastEdited }}</td>
+      <td class="table__data">{{ d.editedBy }}</td>
+      <td class="table__data">
+        <button
+        @click="$router.push(`/edit/${page}/${d.id}`)"
+        class="btn--fill btn--sm table__button">
           <i class="icon-pencil"></i>
         </button>
       </td>
       <td>
-        <button class="btn--fill btn--sm">
+        <button class="btn--fill btn--sm table__button">
           <i class="icon-bin"></i>
         </button>
       </td>

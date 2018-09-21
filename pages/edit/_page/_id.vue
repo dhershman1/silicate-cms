@@ -6,14 +6,14 @@
     <div class="card__body">
       <form class="control">
 
-        <label for="title">Bucket Title</label>
+        <label class="control__label" for="title">Bucket Title</label>
         <p class="small">The title this should show up as when managing content</p>
-        <input type="text" name="title" maxlength="50" v-model="title" />
+        <input class="control__input" type="text" name="title" maxlength="50" v-model="title" />
         <p class="mt">Characters Left: {{ title.length }}/50</p>
 
-        <label for="type">Bucket Type</label>
+        <label class="control__label" for="type">Bucket Type</label>
         <p class="small">The type of content this bucket will contain</p>
-        <select name="type" v-model="type">
+        <select class="control__select" name="type" v-model="type">
           <option value="" disabled selected>Select a Bucket Type</option>
           <option value="text">Text</option>
           <option value="image">Image</option>
@@ -21,15 +21,21 @@
         </select>
         <p class="small" v-if="type">{{ typeDesc }}</p>
 
-        <label for="content">Bucket Content</label>
+        <label class="control__label" for="content">Bucket Content</label>
         <p class="small">The actual content or file this bucket will serve</p>
-        <textarea v-if="inputType === 'text'" v-model="content" rows="8" cols="8"></textarea>
-        <input v-else :type="inputType" v-model="file" :accepts="extensions" multiple name="content" />
+        <textarea class="control__input" v-if="inputType === 'text'" v-model="content" rows="8" cols="8"></textarea>
+        <input
+        v-else
+        class="control__input"
+        :type="inputType"
+        v-model="file"
+        :accepts="extensions"
+        multiple name="content" />
 
         <div v-if="type === 'image'">
-          <label>Alternative Text</label>
+          <label class="control__label">Alternative Text</label>
           <p class="small">If a picture fails to load, what should the alternative text be</p>
-          <input type="text" maxlength="50" v-model="content" />
+          <input class="control__input" type="text" maxlength="50" v-model="content" />
         </div>
 
       </form>
@@ -41,6 +47,7 @@
 import identity from 'kyanite/identity'
 
 export default {
+  loading: false,
   asyncData ({ params, store }) {
     return store.dispatch('bucket/fetchBucket', params).then(identity)
   },
@@ -89,7 +96,7 @@ export default {
   font-size: 14px;
   margin-top: 0.3rem;
 }
-.control select {
+.control__select {
   font-size: 16px;
 }
 .shrink {

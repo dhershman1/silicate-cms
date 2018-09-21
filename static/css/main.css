@@ -1,7 +1,8 @@
 /* Setting up out color variables for the theme */
 /* bg: #92C9B1; */
 :root {
-  --primary: #9AE19D;
+  --primary: rgb(152, 224, 156);
+  --primary-bg: rgba(240, 240, 240, 0.815);
   --secondary: #474A48;
   --accent: #537A5A;
   --dark: #474A48;
@@ -13,7 +14,7 @@
   --border: #E0E0E0;
   --disabled: #B1B1B1;
   --light-bg: #fffaf1;
-  --bg: #92C9B1;
+  --secondary-bg: rgb(146, 201, 177);
 }
 
 /* Primary Setup */
@@ -31,6 +32,8 @@ body {
 #__nuxt,
 #__layout {
   height: 100%;
+  /* Enable For textured BG */
+  background: url(/imgs/background.png)
 }
 /* END Primary Setup */
 
@@ -41,7 +44,7 @@ body {
 /* END Helpers */
 
 /* Setting up our CSS Grid */
-#__layout > div {
+.main-content {
   height: 100%;
   display: grid;
   font-size: 16px;
@@ -50,12 +53,15 @@ body {
                        'aside foot';
   grid-template-rows: 64px 1fr auto;
   grid-template-columns: 10% 90%;
+  /* Enable with the textured BG to formulate a gradient */
+  /* background: rgba(146, 201, 177, 0.5) linear-gradient(143deg,
+  rgba(152, 224, 156, 0.5), rgba(111, 134, 124, 0.5), rgba(146, 201, 177, 0.5)); */
 }
 
 header {
   grid-area: header;
-  height: 63px;
   line-height: 63px;
+  background-color: var(--primary-bg);
   width: 100%;
 }
 
@@ -81,7 +87,7 @@ header > h1 > small {
 
 aside {
   grid-area: aside;
-  background-color: var(--bg);
+  background-color: var(--secondary-bg);
   width: 100%;
   height: 100%;
   overflow: auto;
@@ -119,7 +125,7 @@ main {
   grid-area: main;
   padding: 0 2rem 2rem;
   height: 100%;
-  background-color: #FFF;
+  background-color: var(--primary-bg);
   border-top: 1px solid var(--border);
 }
 
@@ -127,11 +133,11 @@ footer {
   grid-area: foot;
   padding: 0.5rem 1rem;
   border-top: 1px solid var(--border);
-  background-color: #FFF;
+  background-color: var(--primary-bg);
 }
 
 @media (max-width: 40rem) {
-  #__layout > div {
+  .main-content {
     grid-template-columns: 100%;
     grid-template-areas: 'header' 'main' 'aside' 'foot';
   }
@@ -206,7 +212,7 @@ footer {
   font-family: inherit;
   z-index: 0;
   border: none;
-  background: var(--bg);
+  background: var(--secondary-bg);
   color: var(--dark);
   -webkit-transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
   transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
@@ -258,7 +264,7 @@ footer {
   position: relative;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #FFF;
+  background-color: var(--primary-bg);
   background-clip: border-box;
   border: 1px solid var(--border);
   border-radius: 0.25rem;
@@ -290,9 +296,9 @@ footer {
 }
 
 .card__header {
-  background-color: var(--bg);
+  background-color: var(--secondary-bg);
   color: var(--dark);
-  border: 1px solid var(--bg);
+  border: 1px solid var(--secondary-bg);
 }
 
 .card__title {
@@ -357,7 +363,7 @@ footer {
 
 .tabs__link--active {
   color: var(--primary);
-  background-color: #FFF;
+  background-color: var(--primary-bg);
   border-bottom: 0;
   border-color: var(--border);
 }
@@ -373,20 +379,19 @@ select {
 }
 select:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 .2rem var(--bg);
+  box-shadow: 0 0 0 .2rem var(--secondary-bg);
 }
 /* END Select Styles */
 
-/* Form Control Style */
-.control label {
+/* Input Styles */
+.control__label {
   color: var(--dark);
   font-weight: 600;
   padding: 0.3rem 0.3rem 0 0;
   display: block;
 }
 
-.control input,
-.control textarea {
+.control__input {
   margin-top: 0.5rem;
   width: 90%;
   padding: 0.5rem;
@@ -395,65 +400,68 @@ select:focus {
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-.control input:focus,
-.control textarea:focus {
+.control__input:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 .2rem var(--bg);
+  box-shadow: 0 0 0 .2rem var(--secondary-bg);
 }
 
-.control button {
+.control__btn {
   margin-top: 0.35rem;
   display: block;
 }
 
-.control button i {
+.control__btn__icon {
   font-size: 16px;
 }
-/* END Form Control Styles */
+/* END Input Styles */
 
 /* Table Styles */
-table {
+.table {
   width: 100%;
   height: 100%;
   border-collapse: collapse;
   text-align: center;
 }
 
-th {
+.table__head {
   border-bottom: 1px solid var(--border);
 }
 
-.content {
-  border-bottom: 1px solid var(--border);
-  transition: all 0.3s ease;
+.table__row {
+  transition: all .25s ease-in-out;
 }
 
-.content:last-child {
+.table__row:last-child {
   border-bottom: 0;
 }
 
-.content td {
-  padding: 0.5rem 0;
+.table__row:first-child:hover {
+  background-color: inherit;
+  color: inherit;
 }
 
-.content td a {
-  text-decoration: none;
-}
-
-.content td a:hover {
-  color: var(--primary);
-}
-
-tr.content:hover {
+.table__row:hover {
   background-color: var(--dark);
   color: var(--primary);
 }
 
-td button {
+.table__data {
+  padding: 0.5rem 0;
+}
+
+.table__link {
+  text-decoration: none;
+}
+
+.table__link:hover {
+  color: var(--primary);
+}
+
+.table__button {
   border-radius: 0.4rem;
 }
 
-td .btn--fill:before {
+.table__button:before {
   border-radius: 0.15rem;
 }
 /* END Table Styles */
