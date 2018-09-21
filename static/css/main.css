@@ -3,17 +3,17 @@
 :root {
   --primary: rgb(152, 224, 156);
   --primary-bg: rgba(240, 240, 240, 0.815);
-  --secondary: #474A48;
-  --accent: #537A5A;
-  --dark: #474A48;
-  --darker: #2C302E;
-  --success: #28A745;
-  --danger: #DC3545;
-  --warning: #FFC107;
-  --info: #17A2B8;
-  --border: #E0E0E0;
-  --disabled: #B1B1B1;
-  --light-bg: #fffaf1;
+  --secondary: rgb(71, 74, 72);
+  --accent: rgb(83, 122, 90);
+  --dark: rgb(69, 72, 70);
+  --darker: rgb(44, 48, 46);
+  --success: rgb(40, 167, 69);
+  --danger: rgb(220, 53, 69);
+  --warning: rgb(255, 193, 7);
+  --info: rgb(23, 163, 184);
+  --border: rgb(224, 224, 224);
+  --disabled: rgb(177, 177, 177);
+  --light-bg: rgb(255, 250, 241);
   --secondary-bg: rgb(146, 201, 177);
 }
 
